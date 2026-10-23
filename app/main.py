@@ -3,7 +3,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.db.session import init_db
-from app.services.cache import cache_service
 from app.api.v1.funds import router as funds_router
 
 
@@ -11,10 +10,8 @@ from app.api.v1.funds import router as funds_router
 async def lifespan(app: FastAPI):
     # Startup
     await init_db()
-    await cache_service.connect()
     yield
-    # Shutdown
-    await cache_service.disconnect()
+    # Shutdown (nothing to clean up)
 
 
 app = FastAPI(

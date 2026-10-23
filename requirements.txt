@@ -7,8 +7,6 @@ sqlalchemy==2.0.34
 asyncpg==0.29.0
 alembic==1.13.1
 
-# Redis caching
-redis==5.0.8
 
 # Config
 pydantic==2.9.2
